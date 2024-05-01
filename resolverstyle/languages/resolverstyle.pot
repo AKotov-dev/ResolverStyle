@@ -1,0 +1,49 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tform1.caption
+msgid "Resolver Style"
+msgstr ""
+
+#: tform1.label1.caption
+msgid "Style selection:"
+msgstr ""
+
+#: tform1.label2.caption
+msgid "systemd-resolved:"
+msgstr ""
+
+#: tform1.label3.caption
+msgid "/etc/resolv.conf (control)"
+msgstr ""
+
+#: tform1.label4.caption
+msgctxt "tform1.label4.caption"
+msgid "..."
+msgstr ""
+
+#: tform1.label5.caption
+msgid "systemd-networkd:"
+msgstr ""
+
+#: tform1.label6.caption
+msgctxt "tform1.label6.caption"
+msgid "..."
+msgstr ""
+
+#: tform1.label7.caption
+msgid "Attention! Before changing the resolver style, disable the VPN!"
+msgstr ""
+
+#: tform1.mageiabtn.caption
+msgid "Mageia resolver style"
+msgstr ""
+
+#: tform1.rosabtn.caption
+msgid "ROSA resolver style"
+msgstr ""
+
+#: tform1.statictext1.caption
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2024   URL: https://forum.rosalinux.ru"
+msgstr ""
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $(type -p kdesu) && $XDG_CURRENT_DESKTOP == KDE ]]; then
+    kdesu /usr/share/resolverstyle/resolverstyle
+	else
+    pkexec /usr/share/resolverstyle/resolverstyle
+fi
+
+exit;

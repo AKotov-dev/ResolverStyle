@@ -1,0 +1,213 @@
+object Form1: TForm1
+  Left = 278
+  Height = 286
+  Top = 123
+  Width = 568
+  Caption = 'Resolver Style'
+  ClientHeight = 286
+  ClientWidth = 568
+  OnCreate = FormCreate
+  LCLVersion = '3.2.0.0'
+  object MageiaBTN: TSpeedButton
+    Left = 8
+    Height = 41
+    Top = 79
+    Width = 221
+    Caption = 'Mageia resolver style'
+    OnClick = MageiaBTNClick
+  end
+  object ROSABtn: TSpeedButton
+    Left = 8
+    Height = 41
+    Top = 32
+    Width = 221
+    Caption = 'ROSA resolver style'
+    OnClick = ROSABtnClick
+  end
+  object Label1: TLabel
+    Left = 10
+    Height = 17
+    Top = 9
+    Width = 89
+    Caption = 'Style selection:'
+  end
+  object StaticText1: TStaticText
+    Left = 0
+    Height = 20
+    Top = 266
+    Width = 568
+    Align = alBottom
+    Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2024   URL: https://forum.rosalinux.ru'
+    Font.Color = clGray
+    Font.Height = -11
+    Font.Name = 'Sans'
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Label2: TLabel
+    Left = 11
+    Height = 17
+    Top = 159
+    Width = 109
+    Caption = 'systemd-resolved:'
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Label6
+    AnchorSideTop.Control = Label2
+    Left = 135
+    Height = 17
+    Top = 159
+    Width = 12
+    Caption = '...'
+  end
+  object Label5: TLabel
+    Left = 10
+    Height = 17
+    Top = 183
+    Width = 117
+    Caption = 'systemd-networkd:'
+  end
+  object Label6: TLabel
+    AnchorSideLeft.Control = Label5
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label5
+    Left = 135
+    Height = 17
+    Top = 183
+    Width = 12
+    BorderSpacing.Left = 8
+    Caption = '...'
+  end
+  object Memo1: TMemo
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 240
+    Height = 168
+    Top = 32
+    Width = 320
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 8
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 1
+    WantReturns = False
+  end
+  object Label3: TLabel
+    Left = 240
+    Height = 17
+    Top = 8
+    Width = 147
+    Caption = '/etc/resolv.conf (control)'
+  end
+  object Label7: TLabel
+    Left = 11
+    Height = 17
+    Top = 224
+    Width = 409
+    Caption = 'Attention! Before changing the resolver style, disable the VPN!'
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
+  object ResolvConfTimer: TTimer
+    OnTimer = ResolvConfTimerTimer
+    Left = 472
+    Top = 40
+  end
+  object SResolved: TProcess
+    Active = False
+    Executable = 'bash'
+    Parameters.Strings = (
+      '-c'
+      'systemctl is-active systemd-resolved'
+    )
+    Options = [poUsePipes]
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    Left = 280
+    Top = 40
+  end
+  object SResolvedTimer: TTimer
+    OnTimer = SResolvedTimerTimer
+    Left = 280
+    Top = 112
+  end
+  object SNetworkd: TProcess
+    Active = False
+    Executable = 'bash'
+    Parameters.Strings = (
+      '-c'
+      'systemctl is-active systemd-networkd'
+    )
+    Options = [poUsePipes]
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    Left = 384
+    Top = 40
+  end
+  object SNetworkdTimer: TTimer
+    OnTimer = SNetworkdTimerTimer
+    Left = 384
+    Top = 112
+  end
+  object ROSAStyle: TAsyncProcess
+    Active = False
+    Executable = 'bash'
+    Parameters.Strings = (
+      '-c'
+      'cp -fv ./rosa/etc/nsswitch.conf /etc/nsswitch.conf; cp -fv ./rosa/etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf; rm -f /etc/resolv.conf; ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf; systemctl unmask systemd-resolved systemd-networkd; systemctl enable systemd-resolved; systemctl restart systemd-resolved networkmanager'
+    )
+    Options = []
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    Left = 176
+    Top = 8
+  end
+  object MageiaStyle: TAsyncProcess
+    Active = False
+    Executable = 'bash'
+    Parameters.Strings = (
+      '-c'
+      'cp -fv ./mageia/etc/nsswitch.conf /etc/nsswitch.conf; cp -fv ./mageia/etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf; systemctl stop systemd-resolved systemd-networkd; systemctl disable systemd-networkd systemd-resolved; systemctl mask systemd-resolved systemd-networkd; rm -f /etc/resolv.conf; echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.conf; systemctl restart networkmanager'
+    )
+    Options = []
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    Left = 176
+    Top = 152
+  end
+end

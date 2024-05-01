@@ -1,0 +1,67 @@
+[NAME]
+name=resolverstyle
+
+[VERSION]
+version=0.1
+
+[RELEASE]
+release=0.mrx8
+
+[GROUP]
+group=Accessibility
+
+[DESCRIPTION]
+0=Selecting a resolver style (ROSA/Mageia)
+1=---
+2=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2024
+
+[SUMMARY]
+summary=Selecting a resolver style (ROSA/Mageia)
+
+[URLCOPY]
+urlcopy=https://github.com/AKotov-dev/ResolverStyle
+
+[LICENSE]
+license=GPLv3
+
+[DEPS]
+deps=gtk2 systemd
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[DEB]
+deb=0
+
+[FILES]
+0=/usr/bin/resolverstyle
+1=/usr/share/applications/resolverstyle.desktop
+2=/usr/share/icons/resolverstyle.png
+3=/usr/share/resolverstyle/
+4=/usr/share/doc/resolverstyle/
+
+[URL32]
+url32=https://github.com/AKotov-dev/ResolverStyle
+
+[PROGRAMNAME]
+programname=ResolverStyle
+
+[DEVTOOL]
+devtool=Lazarus
+
+[TOOLVERSION]
+toolversion=3.2
+
+[INFO]
+0=v0.1
+1=+ Initial release
+2=+ RPM package for ROSA-12.x

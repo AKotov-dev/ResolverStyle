@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ResolverStyle
+Name[ru]=ResolverStyle
+Comment=Selecting a resolver style (ROSA/Mageia)
+Comment[ru]=Выбор стиля резольвера (ROSA/Mageia)
+Icon=resolverstyle
+Exec=resolverstyle
+Type=Application
+Categories=System;
+Terminal=false
