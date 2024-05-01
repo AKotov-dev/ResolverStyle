@@ -3,7 +3,7 @@ ROSA Linux: Selecting a resolver style (ROSA/Mageia)
   
 ![](https://github.com/AKotov-dev/ResolverStyle/blob/main/Screenshot1.png)
   
-Мотивация:
+Мотивация
 --
 Недавно искал причину, почему выставляемые в `/etc/resolv.conf` от vpn dns принудительно перезаписываются на `127.0.0.53`. Виновником торжества оказался неуёмный `systemd-resolved`. Остановить (stop) и отключить (disable) его оказалось мало. Некоторые vpn-клиенты, например тот же `warp-cl`i ищут сервис systemd-resolved и если находят - пытаются его использовать.
 
